@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple calculator web application for basic arithmetic operations">
+    <link rel="icon" href="../imageset/calculator.png">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+  <h1>Basic Calculator</h1>
+    <div id="container">
+        <div>
+            <input type="text" id="display">
+        </div>
+        <div>
+          <input type="button" class="operators" value="AC">
+          <input type="button" class="operators" value="DEL">
+          <input type="button" class="operators" value=".">
+          <input type="button" class="operators" value="/">
+      </div>
+      <div>
+        <input type="button" class="numbers" value="7">
+        <input type="button" class="numbers" value="8">
+        <input type="button" class="numbers" value="9">
+        <input type="button" class="operators" value="*">
+    </div>
+    <div>
+      <input type="button" class="numbers" value="4">
+      <input type="button" class="numbers" value="5">
+      <input type="button" class="numbers" value="6">
+      <input type="button" class="operators" value="-">
+  </div>
+  <div>
+    <input type="button" class="numbers" value="1">
+    <input type="button" class="numbers" value="2">
+    <input type="button" class="numbers" value="3">
+    <input type="button" class="operators" value="+">
+  </div>
+  <div>
+    <input type="button" class="numbers" value="000">
+    <input type="button" class="numbers" value="0">
+    <input type="button" class="numbers" value="00">
+    <input type="button" class="operators" value="=">
+   </div>
+</div>
+<script>
+ let buttons=document.querySelectorAll("input[type='button']");
+ let display=document.getElementById("display");
+ buttons.forEach(button => {
+  button.addEventListener("click",()=>{
+    if(button.value === "AC")
+       display.value='';
+    else if(button.value === "DEL"){
+      if(display.value.length>0)
+        display.value=display.value.slice(0,-1);
+    }  
+    else if(button.value === "="){
+      try{
+        if(display.value.length>0)
+        display.value=eval(display.value);
+      }catch{
+        alert("invalid operations")
+      }
+    }
+    else
+       display.value += button.value;
+  })
+  
+ });
+</script>
+</body>
+</html>
